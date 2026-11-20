@@ -1,24 +1,46 @@
 # TIPS-IA
 
-Site statique du réseau TIPS-IA.
+Site du réseau TIPS-IA, généré avec Jekyll (intégré à GitHub Pages) et alimenté par le CMS Décap.
+
+## Ajouter ou modifier du contenu (éditeurs)
+
+Ouvrir `https://juldawg.github.io/TIPS-IA/admin/` et se connecter avec un compte GitHub ayant accès au dépôt.
+
+- **Actions** : titre, année, date, image, résumé, texte. Les actions sont classées par année automatiquement.
+- **Vidéos**, **Outils et Tutos**, **Projets financés** : titre, lien, résumé.
+- **Accueil** : bannière et bloc « À la une ».
+- **Pages** : Rejoindre TIPS-IA, Présentation et Gouvernance.
+
+Chaque enregistrement crée un fichier dans le dépôt. Le site se met à jour après la publication (quelques minutes).
 
 ## Structure
 
-- `index.html` : page d'accueil (bannière, logo, boutons)
-- `reseau.html` : Réseau, avec `reseau-presentation.html`, `reseau-gouvernance.html`, `reseau-projets-finances.html`
-- `actions.html` : Actions par année (`actions-2026.html`, `actions-2025.html`)
-- `videos.html` : liens vers les vidéos
-- `outils-tutos.html` : outils et tutoriels
-- `rejoindre.html` : rejoindre TIPS-IA
-- `css/style.css` : feuille de style commune
-- `assets/` : logo (`logo.svg`) et images
+- `_config.yml` : titre, adresse du site et collections.
+- `_layouts/` : gabarits des pages (`default`, `page`, `entree`).
+- `_includes/` : en-tête et pied de page.
+- `_actions/`, `_videos/`, `_outils/`, `_projets/` : contenus gérés par le CMS.
+- `_data/accueil.yml` : textes de la page d'accueil.
+- `index.html`, `actions.md`, `videos.md`, `outils-tutos.md`, `rejoindre.md`, `reseau.md`, `reseau/` : pages du site.
+- `admin/` : interface d'administration Décap (`config.yml` définit les champs).
+- `assets/uploads/` : images envoyées depuis le CMS.
+- `css/style.css` : feuille de style.
 
-## Ajouter une année d'actions
+## Mise en service (une fois, côté responsable du site)
 
-1. Copier `actions-2025.html` et renommer la copie (ex. `actions-2027.html`).
-2. Mettre à jour le titre et le fil d'Ariane.
-3. Ajouter un bouton dans `actions.html`.
+1. **Compte GitHub** : chaque éditeur doit créer un compte GitHub gratuit et être ajouté comme collaborateur du dépôt (Settings → Collaborators).
+2. **Authentification** : créer une « OAuth App » sur GitHub (Settings développeur → OAuth Apps), avec pour URL de rappel l'adresse du service d'authentification. Déployer ensuite un petit service d'authentification gratuit (par exemple sur Vercel ou Netlify Functions, projet « decap-proxy »). Renseigner son adresse dans `admin/config.yml` (`base_url`).
+3. **Pages** : Settings → Pages, source : la branche `main`, dossier `/ (root)`.
+4. **Branche** : le site se publie depuis `main`. Les modifications actuelles sont sur `claude/changes` et doivent être fusionnées dans `main` pour être publiées.
 
-## Mise en ligne (GitHub Pages)
+Tant que l'étape 2 n'est pas faite, la page `/admin/` affiche la connexion mais ne peut pas se connecter à GitHub.
 
-Dans les paramètres du dépôt : **Settings → Pages**, source : branche `main`, dossier `/ (root)`.
+## Développement local (facultatif)
+
+Nécessite Ruby. Depuis le dossier du projet :
+
+```bash
+gem install bundler jekyll
+jekyll serve --baseurl ""
+```
+
+Le site est alors visible sur `http://localhost:4000`.

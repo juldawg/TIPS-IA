@@ -1,0 +1,102 @@
+backend:
+  name: github
+  repo: juldawg/TIPS-IA
+  branch: main
+  # Adresse du service d'authentification GitHub (à déployer une fois, voir README)
+  base_url: https://VOTRE-PROXY-OAUTH.example.com
+  auth_endpoint: auth
+
+media_folder: "assets/uploads"
+public_folder: "/assets/uploads"
+
+collections:
+  - name: "actions"
+    label: "Actions"
+    label_singular: "Action"
+    folder: "_actions"
+    create: true
+    slug: "{{annee}}-{{slug}}"
+    summary: "{{title}} ({{annee}})"
+    fields:
+      - {label: "Titre", name: "title", widget: "string"}
+      - {label: "Année", name: "annee", widget: "string", hint: "Ex. 2026"}
+      - {label: "Date", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false}
+      - {label: "Image", name: "image", widget: "image", required: false}
+      - {label: "Résumé", name: "resume", widget: "text"}
+      - {label: "Texte", name: "body", widget: "markdown"}
+      - {label: "Mise en page", name: "layout", widget: "hidden", default: "entree"}
+
+  - name: "videos"
+    label: "Vidéos"
+    label_singular: "Vidéo"
+    folder: "_videos"
+    create: true
+    slug: "{{slug}}"
+    summary: "{{title}}"
+    fields:
+      - {label: "Titre", name: "title", widget: "string"}
+      - {label: "Lien de la vidéo", name: "url", widget: "string"}
+      - {label: "Résumé", name: "resume", widget: "text"}
+
+  - name: "outils"
+    label: "Outils et Tutos"
+    label_singular: "Outil ou tuto"
+    folder: "_outils"
+    create: true
+    slug: "{{slug}}"
+    summary: "{{title}}"
+    fields:
+      - {label: "Titre", name: "title", widget: "string"}
+      - {label: "Lien", name: "url", widget: "string", required: false}
+      - {label: "Résumé", name: "resume", widget: "text"}
+
+  - name: "projets"
+    label: "Projets financés"
+    label_singular: "Projet financé"
+    folder: "_projets"
+    create: true
+    slug: "{{slug}}"
+    summary: "{{title}} ({{annee}})"
+    fields:
+      - {label: "Titre", name: "title", widget: "string"}
+      - {label: "Année", name: "annee", widget: "string"}
+      - {label: "Porteur", name: "porteur", widget: "string", required: false}
+      - {label: "Résumé", name: "resume", widget: "text"}
+
+  - name: "accueil"
+    label: "Accueil"
+    files:
+      - name: "accueil"
+        label: "Page d'accueil"
+        file: "_data/accueil.yml"
+        fields:
+          - {label: "Titre de la bannière", name: "banniere_titre", widget: "string"}
+          - {label: "Texte de la bannière", name: "banniere_texte", widget: "string"}
+          - {label: "Titre de la une", name: "une_titre", widget: "string"}
+          - {label: "Texte de la une", name: "une_texte", widget: "text"}
+          - {label: "Lien de la une", name: "une_lien", widget: "string", hint: "Ex. /actions/"}
+
+  - name: "pages"
+    label: "Pages"
+    files:
+      - name: "rejoindre"
+        label: "Rejoindre TIPS-IA"
+        file: "rejoindre.md"
+        fields:
+          - {label: "Titre", name: "title", widget: "string"}
+          - {label: "Texte", name: "body", widget: "markdown"}
+          - {label: "Mise en page", name: "layout", widget: "hidden", default: "page"}
+      - name: "presentation"
+        label: "Réseau : Présentation"
+        file: "reseau/presentation.md"
+        fields:
+          - {label: "Titre", name: "title", widget: "string"}
+          - {label: "Texte", name: "body", widget: "markdown"}
+          - {label: "Mise en page", name: "layout", widget: "hidden", default: "page"}
+      - name: "gouvernance"
+        label: "Réseau : Gouvernance"
+        file: "reseau/gouvernance.md"
+        fields:
+          - {label: "Titre", name: "title", widget: "string"}
+          - {label: "Texte", name: "body", widget: "markdown"}
+          - {label: "Mise en page", name: "layout", widget: "hidden", default: "page"}

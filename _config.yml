@@ -1,0 +1,29 @@
+title: TIPS-IA
+description: Réseau TIPS-IA : actions, vidéos, outils et tutoriels.
+lang: fr
+url: "https://juldawg.github.io"
+baseurl: "/TIPS-IA"
+
+exclude:
+  - README.md
+
+collections:
+  actions:
+    output: true
+    permalink: /actions/:name/
+  videos:
+    output: false
+  outils:
+    output: false
+  projets:
+    output: false
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: page
+  - scope:
+      path: "_actions"
+    values:
+      layout: entree

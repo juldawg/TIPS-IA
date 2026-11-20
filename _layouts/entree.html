@@ -1,0 +1,16 @@
+---
+layout: default
+---
+<main id="contenu">
+  <div class="fil-ariane">
+    <a href="{{ '/' | relative_url }}">Accueil</a> ›
+    <a href="{{ '/actions/' | relative_url }}">Actions</a> ›
+    {{ page.title }}
+  </div>
+  <h1 class="titre-page">{{ page.title }}</h1>
+  {% if page.date %}<p class="meta">{{ page.date | date: "%d/%m/%Y" }}</p>{% endif %}
+  {% if page.image %}<img class="visuel" src="{{ page.image | relative_url }}" alt="">{% endif %}
+  <div class="texte">
+    {{ content }}
+  </div>
+</main>
