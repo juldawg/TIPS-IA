@@ -1,0 +1,153 @@
+:root {
+  --bleu: #1d3557;
+  --bleu-clair: #457b9d;
+  --accent: #e63946;
+  --accent-fonce: #c1121f;
+  --fond: #f5f7fa;
+  --blanc: #ffffff;
+  --texte: #1b1b1b;
+  --gris: #5a5a5a;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color: var(--texte);
+  background: var(--fond);
+  line-height: 1.6;
+}
+
+img { max-width: 100%; display: block; }
+a { color: inherit; }
+
+/* En-tête */
+.entete {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  padding: 12px 16px;
+  background: var(--blanc);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+.entete .logo img { height: 56px; width: auto; }
+.menu {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+}
+.menu a {
+  text-decoration: none;
+  color: var(--bleu);
+  font-weight: 600;
+}
+.menu a:hover { text-decoration: underline; }
+
+/* Boutons */
+.bouton {
+  display: inline-block;
+  padding: 0.7rem 1.3rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+.bouton-rejoindre { background: var(--accent); color: var(--blanc); }
+.bouton-rejoindre:hover { background: var(--accent-fonce); }
+
+/* Bannière */
+.banniere {
+  /* Pour utiliser une photo : ajouter background-image: url("../assets/banniere.jpg") */
+  min-height: 260px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 16px;
+  text-align: center;
+  color: var(--blanc);
+  background: linear-gradient(135deg, var(--bleu), var(--bleu-clair));
+  background-size: cover;
+  background-position: center;
+}
+.banniere h1 { margin: 0; font-size: clamp(1.6rem, 4vw, 2.6rem); }
+.banniere p { margin: 8px 0 0; font-size: 1.1rem; opacity: 0.95; }
+
+.logo-accueil {
+  display: block;
+  width: min(360px, 80%);
+  margin: 24px auto 0;
+}
+
+/* Contenu */
+main {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 24px 16px 48px;
+}
+h2 { color: var(--bleu); margin-top: 2.2rem; }
+h1.titre-page { color: var(--bleu); margin-top: 0.5rem; }
+
+.grille-boutons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+.carte-bouton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 110px;
+  padding: 20px 16px;
+  background: var(--bleu);
+  color: var(--blanc);
+  border-radius: 10px;
+  text-decoration: none;
+  font-size: 1.15rem;
+  font-weight: 600;
+  text-align: center;
+  transition: background 0.2s;
+}
+.carte-bouton:hover { background: var(--bleu-clair); }
+
+.cartes {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.carte {
+  background: var(--blanc);
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+}
+.carte h3 { margin: 0 0 8px; color: var(--bleu); }
+.carte p { margin: 0 0 12px; color: var(--gris); }
+.carte a.lien { color: var(--bleu-clair); font-weight: 600; }
+
+.placeholder { font-style: italic; color: #777; }
+
+.fil-ariane { font-size: 0.9rem; color: var(--gris); margin-bottom: 8px; }
+.fil-ariane a { color: var(--bleu-clair); }
+
+.texte { max-width: 760px; }
+
+/* Pied de page */
+.pied {
+  padding: 20px 16px;
+  text-align: center;
+  color: var(--gris);
+  font-size: 0.9rem;
+  background: var(--blanc);
+  border-top: 1px solid #e2e2e2;
+}
+
+@media (max-width: 600px) {
+  .entete { justify-content: center; text-align: center; }
+  .banniere { min-height: 200px; }
+}
